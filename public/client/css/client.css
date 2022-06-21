@@ -1,0 +1,91 @@
+* {
+    margin: unset;
+    padding: unset;
+    font-family: 'Montserrat';
+}
+
+body {
+    background-color: rgb(217, 217, 240) !important;
+}
+
+.row-bg {
+    background: url('../images/concert.jpg');
+    width: 100%;
+    background-size: cover;
+    height: 768px;
+}
+
+.content-bg {
+    background-color: rgb(19, 24, 17, 0.8);
+    background-size: 100%;
+}
+
+
+.content-title {
+    font-family: Helvetica;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+.carousel-image {
+    max-height: 450px;
+    /* width: auto; */
+    /* height: auto; */
+    object-fit: cover;
+}
+
+.carousel-caption {
+    width: auto;
+    padding: unset;
+    height: 150px;
+    background-color: rgba(224, 224, 224, 0.8);
+
+}
+
+
+.card-ticket img {
+    height: 400px;
+    width: auto;
+    object-fit: cover;
+}
+
+#nav {
+    background: rgb(21, 19, 55);
+    background: linear-gradient(90deg, rgba(21, 19, 55, 1) 0%, rgba(4, 2, 57, 1) 36%, rgba(69, 65, 189, 1) 85%, rgba(3, 132, 158, 1) 100%);
+    color: aliceblue;
+    height: 80px;
+    padding: 20px 0;
+    font-size: 25px;
+}
+
+#nav ul {
+    display: inline;
+    text-decoration: none;
+    margin: unset;
+    padding: unset;
+    list-style-type: none;
+}
+
+#nav li {
+    text-decoration: none;
+    display: inline;
+    margin-right:8px;
+}
+
+#nav li a {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+#nav li a:hover {
+    color: rgb(142, 67, 212);
+}
+.a-link {
+    text-decoration: none;
+    color: unset;
+}
+
+.a-link:hover {
+    color: red;
+    box-shadow: 30px 30px lightblue; ;
+}

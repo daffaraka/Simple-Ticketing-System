@@ -1,0 +1,15 @@
+.ticket-image {
+    height: 150px;
+    width: auto;
+    padding: 0px;
+}
+
+.ticket-desc h1,.ticket-desc h2,.ticket-desc h3,.ticket-desc h4, .ticket-desc h5,.ticket-desc h6  {
+    font-family: 'Black Ops One';
+    font-weight: lighter;
+}
+
+.ticket-list {
+
+}
+
