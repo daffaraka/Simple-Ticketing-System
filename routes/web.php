@@ -4,9 +4,11 @@ use App\Http\Controllers\ArtistController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TicketCategoryController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\VenueController;
 use App\Models\Artist;
+use App\Models\TicketCategory;
 use App\Models\Venue;
 
 /*
@@ -53,11 +55,12 @@ Route::get('venues/delete/{id}', [VenueController::class,'destroy'])->name('venu
 Route::get('ticket', [TicketController::class,'index'])->name('ticket.index');
 Route::get('ticket/create', [TicketController::class,'create'])->name('ticket.create');
 Route::post('ticket/store', [TicketController::class,'store'])->name('ticket.store');
-Route::get('ticket/show/{id}', [TicketController::class,'show'])->name('ticket.show');
+Route::get('ticket/{id}', [TicketController::class,'show'])->name('ticket.show');
 Route::get('ticket/edit/{id}', [TicketController::class,'edit'])->name('ticket.edit');
 Route::post('ticket/update/{id}', [TicketController::class,'update'])->name('ticket.update');
 Route::get('ticket/delete/{id}', [TicketController::class,'destroy'])->name('ticket.destroy');
-
+Route::get('ticket/{id}/create-category', [TicketCategoryController::class,'create'])->name('ticketCategory.create');
+Route::post('ticket/{id}/store-category', [TicketCategoryController::class,'store'])->name('ticketCategory.store');
 
 // Route::get('artist/{id}/delete',[ArtistController::class,'destroy'])->name('artist.delete');
 

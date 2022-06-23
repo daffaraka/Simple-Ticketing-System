@@ -16,7 +16,7 @@ class CreateTicketCategoriesTable extends Migration
         Schema::create('ticket_categories', function (Blueprint $table) {
             $table->id();
             $table->string('ticket_category');
-            $table->string('ticket_price');
+            $table->integer('ticket_price');
             $table->unsignedBigInteger('id_ticket');
             $table->timestamps();
 

@@ -33,4 +33,9 @@ class Ticket extends Model
     {
         return $this->belongsTo(Artist::class,'id_artist');
     }
+
+    public function TicketCategories()
+    {
+        return $this->hasMany(TicketCategory::class,'id_ticket');
+    }
 }

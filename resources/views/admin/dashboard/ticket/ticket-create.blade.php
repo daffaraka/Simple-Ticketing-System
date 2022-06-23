@@ -54,11 +54,5 @@
 
 
         <script></script>
-        {{-- <div class="col-md-3 p-0 bg-dark rounded-start d-flex justify-content-center">
-        </div>
-        <div class="col-md-9 bg-light rounded-end px-5 py-2 ticket-desc">
-            <h3> AVICI</h3>
-            <h5> Jakarta Stadion</h5>
-            <h5> 11 November 2022</h5>
-        </div> --}}
+       
     @endsection

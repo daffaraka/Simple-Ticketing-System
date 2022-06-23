@@ -7,6 +7,7 @@ use App\Models\Ticket;
 use App\Models\Venue;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+
 class TicketController extends Controller
 {
     
@@ -67,7 +68,9 @@ class TicketController extends Controller
     public function show($id)
     {
         $ticket = Ticket::with(['Venues','Artists'])->find($id);
-        
+        $ticketCheapest = Ticket::with('TicketCategories')->where('id_ticket',$id)->get()->sortBy('ticket_price');
+        // $ticketCheapest->values()->where($id,'id_ticket');
+        dd($ticketCheapest);
         return view('admin.dashboard.ticket.ticket-show',compact('ticket'));
     }
 
