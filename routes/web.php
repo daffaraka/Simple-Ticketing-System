@@ -4,8 +4,11 @@ use App\Http\Controllers\ArtistController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TicketCategoryController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\VenueController;
 use App\Models\Artist;
 use App\Models\TicketCategory;
@@ -29,6 +32,8 @@ use App\Models\Venue;
 Route::get('/', [ClientController::class,'index'])->name('client.index');
 Route::get('/show-ticket/{id}', [ClientController::class,'showTicket'])->name('client.showTicket');
 Route::get('show-ticket/order/{id}', [ClientController::class,'order'])->name('client.order');
+Route::post('show-ticket/order/{id}/create-order',[TransactionController::class,'createPemesanan'])->name('client.createPemesanan');
+
 
 Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
 
@@ -61,6 +66,24 @@ Route::post('ticket/update/{id}', [TicketController::class,'update'])->name('tic
 Route::get('ticket/delete/{id}', [TicketController::class,'destroy'])->name('ticket.destroy');
 Route::get('ticket/{id}/create-category', [TicketCategoryController::class,'create'])->name('ticketCategory.create');
 Route::post('ticket/{id}/store-category', [TicketCategoryController::class,'store'])->name('ticketCategory.store');
+
+Route::get('user', [UserController::class,'index'])->name('user.index');
+Route::get('user/create', [UserController::class,'create'])->name('user.create');
+Route::post('user/store', [UserController::class,'store'])->name('user.store');
+Route::get('user/edit/{id}', [UserController::class,'edit'])->name('user.edit');
+Route::post('user/update', [UserController::class,'update'])->name('user.update');
+Route::get('user/show/{id}', [UserController::class,'show'])->name('user.show');
+Route::get('user/delete/{id}', [UserController::class,'destroy'])->name('user.destroy');
+
+// Route::get('user/index', [UserController::class,'index'])->name('user.index');
+
+Route::get('role', [RoleController::class,'index'])->name('role.index');
+Route::get('role/create', [RoleController::class,'create'])->name('role.create');
+Route::post('role/store', [RoleController::class,'store'])->name('role.store');
+Route::get('role/edit/{id}', [RoleController::class,'edit'])->name('role.edit');
+Route::post('role/update', [RoleController::class,'update'])->name('role.update');
+Route::get('role/show/{id}', [RoleController::class,'show'])->name('role.show');
+Route::get('role/delete/{id}', [RoleController::class,'destroy'])->name('role.destroy');
 
 // Route::get('artist/{id}/delete',[ArtistController::class,'destroy'])->name('artist.delete');
 

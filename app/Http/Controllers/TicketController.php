@@ -70,7 +70,7 @@ class TicketController extends Controller
         $ticket = Ticket::with(['Venues','Artists'])->find($id);
         $ticketCheapest = Ticket::with('TicketCategories')->where('id_ticket',$id)->get()->sortBy('ticket_price');
         // $ticketCheapest->values()->where($id,'id_ticket');
-        dd($ticketCheapest);
+        // dd($ticketCheapest);
         return view('admin.dashboard.ticket.ticket-show',compact('ticket'));
     }
 

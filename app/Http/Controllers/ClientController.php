@@ -24,7 +24,8 @@ class ClientController extends Controller
     public function order($id)
     {
         $ticket = Ticket::with(['Venues','Artists'])->find($id);
-        
-        return view('client.order-ticket',compact('ticket'));
+        $ticketCategories = Ticket::with('TicketCategories')->find($id);
+        // dd($ticketCategories);
+        return view('client.order-ticket',compact(['ticket','ticketCategories']));
     }
 }

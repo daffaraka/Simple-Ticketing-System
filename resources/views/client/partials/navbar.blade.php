@@ -1,12 +1,23 @@
-<header>
-    <nav id="nav">
-        <div class="container fw-bold">
-            <ul>
-                <li> <a href=""> Beranda </a></li>
-                <li> <a href=""> About Us </a></li>
+<header class="bg-light ">
+    <nav id="navbar" class="container navbar px-3 " >
+        <a class="navbar-brand" href="#">Navbar</a>
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link" href="#scrollspyHeading1">First</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#scrollspyHeading2">Second</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">User</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#scrollspyHeading3">Third</a></li>
+              <li><a class="dropdown-item" href="#scrollspyHeading4">Fourth</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#scrollspyHeading5">Logout</a></li>
             </ul>
-        </div>
-      
-    </nav>
+          </li>
+        </ul>
+      </nav>
 
 </header>

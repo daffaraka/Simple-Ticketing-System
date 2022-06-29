@@ -39,7 +39,7 @@ class TicketCategoryController extends Controller
 
         } else {
             Alert::success('Success', 'New ticket category added');
-            return redirect()->route('ticket.show',compact('ticket'));
+            return redirect()->route('ticket.show',['id'=>$id]);
 
         }
 
