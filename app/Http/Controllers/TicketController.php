@@ -21,7 +21,10 @@ class TicketController extends Controller
     public function create()
     {
         $venue = Venue::all();
+       
         $artist = Artist::all();
+
+      
         return view('admin.dashboard.ticket.ticket-create',compact(['venue','artist']));
     }
 
@@ -45,12 +48,8 @@ class TicketController extends Controller
         $ticketAttribute = [];
         $ticketAttribute['id_artist'] = $request->artist;
         $ticketAttribute['id_venue'] = $request->venue;
-        $ticketAttribute['ticket_price'] = $request->ticket_price;
         $ticketAttribute['ticket_name'] = $request->ticket_name;
-        $ticketAttribute['ticket_price'] = $request->ticket_price;
         $ticketAttribute['concert_date'] = $request->concert_date;
-        $ticketAttribute['ticket_stock'] = $request->ticket_stock;
-        $ticketAttribute['ticket_type'] = $request->ticket_type;
         $ticketAttribute['ticket_image'] = $request->ticket_name.'-'.$filename;
 
         $ticketCreate =  Ticket::create($ticketAttribute);
@@ -89,12 +88,17 @@ class TicketController extends Controller
    
     public function destroy($id)
     {
-        $ticket = Ticket::where('id_venue',$id)->first();
+        $ticket = Ticket::where('id_ticket',$id)->first();
         if ($ticket != null) {
             $ticket->delete(public_path('ticket',$ticket->ticket_image));
-            $ticket->delete();
-            return redirect()->route('ticket.index')->alert()->success('Deleted!', 'Ticket been deleted');;
+            $ticketDelete =  $ticket->delete();
+            if(!$ticketDelete){
+                Alert::failed('Error', 'There something wrong with your data');
+                return redirect()->route('ticket.index');
+            } else{
+                Alert::success('Success', 'Data deleted');
+              return redirect()->route('ticket.index');
+            }
         }
-        return redirect()->refresh();
     }
 }

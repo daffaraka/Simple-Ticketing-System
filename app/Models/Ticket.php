@@ -25,6 +25,7 @@ class Ticket extends Model
        
      ];
 
+    //method
     public function Venues ()
     {
         return $this->belongsTo(Venue::class,'id_venue');

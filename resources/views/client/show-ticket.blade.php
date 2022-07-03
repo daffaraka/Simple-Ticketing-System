@@ -1,24 +1,33 @@
 @extends('client.client-layout')
 @section('content')
     <div class="container">
-        <div class="row mt-5">
-            <div class="col-md-12">
+        <div class="row mt-5 d-flex justify-content-center">
+            <div class="col-md-8">
                 <div class="card">
                     <img class="card-img" src="{{ asset('ticket_image/' . $ticket->ticket_image) }}" alt="">
                 </div>
             </div>
-            <div class="col-md-8 mt-5">
+            <div class="col-md-10 mt-5">
                 <div class="bg-dark text-light py-2 px-3">
-                    <span>   Event will be held on {{ \Carbon\Carbon::parse($ticket->concert_date)->diffForHumans() }} </span>
+                    <span> Event will be held on {{ \Carbon\Carbon::parse($ticket->concert_date)->toDateString() }}
+                    </span>
                 </div>
                 <div class="card rounded-none mt-2">
                     <div class="card-body ">
-                        <h2 class="card-title fw-bold">{{$ticket->ticket_name}}</h2>
-                        <p class="card-text">Content</p>
+                        <h2 class="card-title fw-bold">{{ $ticket->ticket_name }}</h2>
+                        @foreach ($ticket->TicketCategories as $tc)
+                            <div class="card w-50">
+                                <a href="{{route('client.createPemesanan',$tc->id_categories)}}" class="text-decoration-none link-dark">
+                                    <div class="card-body">
+                                        <h3>{{ $tc->ticket_category }}</h3>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 my-5">
+            {{-- <div class="col-md-4 my-5">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Start from </h5>
@@ -26,7 +35,7 @@
                         <a href="{{route('client.order',$ticket->id_ticket)}}" class="btn btn-warning">Order Now</a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             {{-- <div class="col-md-6">
                 <form action="" class="px-5 border-1">

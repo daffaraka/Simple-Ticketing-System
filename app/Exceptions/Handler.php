@@ -32,6 +32,7 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        //
+        // return redirect()->route('login');
+
     }
 }

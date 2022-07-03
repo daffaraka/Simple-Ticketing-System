@@ -2,15 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pemesanan;
+use id;
 use App\Models\Ticket;
+use App\Models\Pemesanan;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use App\Models\TicketCategory;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
 class TransactionController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+     
+    }
     public function creatTransaction(Request $request)
     {
         dd($request->all());
@@ -19,26 +28,37 @@ class TransactionController extends Controller
         return redirect()->route('home');
     }
 
-    public function createPemesanan($id,Request $request)
+
+    public function viewPemesanan($id, Request $request)
     {
-        $ticket = Ticket::find($id);
+
+        $ticket = TicketCategory::with('Ticket')->find($id);
+        $ticketCategories = TicketCategory::find($id);
+
+        return view('client.order-ticket', compact(['ticket', 'ticketCategories']));
+    }
+
+    public function createPemesanan($id, Request $request)
+    {
+       
+        $ticket = TicketCategory::with('Ticket')->find($id);
+        $ticketCategories = TicketCategory::find($id);
         $pemesananAttr = [];
-        $pemesananAttr['nama_pemesan'] = $request->nama_pemesanan;
-        $pemesananAttr['email_pemesan'] = $request->email_pemesan;
-        $pemesananAttr['nomor_pemesan'] = $request->nomor_pemesan;
         $pemesananAttr['nama_pengunjung'] = $request->nama_pengunjung;
-        $pemesananAttr['email_pengunjung'] = $request->email_pengunjung;
         $pemesananAttr['nomor_pengunjung'] = $request->nomor_pengunjung;
-        $pemesananAttr['jumlah_ticket'] = $request->jumlah_ticket;
-        $pemesananAttr['total'] = $request->total;
-        $pemesananAttr['id_ticket'] = $request->id_ticket;
-        $pemesananAttr['id_user'] = $request->id_user;
+        $pemesananAttr['email_pengunjung'] = $request->email_pengunjung;
+        $pemesananAttr['jumlah_ticket'] = 1;
+        $pemesananAttr['total'] = $ticketCategories->ticket_price;
+        $pemesananAttr['id_ticket'] = $ticketCategories->Ticket->value('id_ticket');
+        $pemesananAttr['id_ticket_category'] = $ticketCategories->value('id_categories');
+        $pemesananAttr['id_user'] = Auth::user()->id;
         $pemesananAttr['status'] = 'PENDING';
 
+        
         $createPemesanan = Pemesanan::create($pemesananAttr);
-        if(!$createPemesanan) {
+        if (!$createPemesanan) {
             Alert::error('Error Message', 'Optional Title');
-            return redirect()->route('client.showTicket',['id_ticket' => $ticket->id_ticket]);
+            return redirect()->route('client.showTicket', ['id_ticket' => $ticket->id_ticket]);
         } else {
             Alert::success('Success Message', 'Optional Title');
             return redirect()->route('ticket.index');

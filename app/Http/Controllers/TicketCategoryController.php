@@ -24,7 +24,6 @@ class TicketCategoryController extends Controller
     public function store($id,Request $request)
     {
      
-      
         $ticket = Ticket::with(['Venues','Artists'])->find($id);
         $ticketCategoryAttr = [];
         $ticketCategoryAttr['id_ticket'] = $ticket->id_ticket; 

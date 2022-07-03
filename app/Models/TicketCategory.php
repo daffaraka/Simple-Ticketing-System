@@ -9,6 +9,7 @@ class TicketCategory extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'id_categories';
     protected $fillable = 
     [
         'ticket_category',
@@ -18,7 +19,7 @@ class TicketCategory extends Model
 
     public function Ticket()
     {
-        return $this->belongsTo(Ticket::class);
+        return $this->belongsTo(Ticket::class,'id_ticket');
     }
 
 }

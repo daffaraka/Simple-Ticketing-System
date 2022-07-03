@@ -19,6 +19,21 @@ class Pemesanan extends Model
         'total',
         'id_ticket',
         'id_user',
+        'id_ticket_category',
+        'bukti_pembayaran',
         'status'
     ];
+
+    public function Ticket()
+    {
+        return $this->belongsTo(Ticket::class,'id_ticket');
+    }
+    public function User()
+    {
+        return $this->belongsTo(User::class,'id_user');
+    }
+    public function TicketCategory()
+    {
+        return $this->belongsTo(TicketCategory::class,'id_ticket_category');
+    }
 }

@@ -18,10 +18,10 @@
                    </tr>
                </thead>
                <tbody class="table-light">
-                  <?php $i=1 ?>
+                  
                    @foreach ($artist as $a)
                         <tr>
-                            <td>{{$i++}}</td>
+                            <td>{{$a->id_artist}}</td>
                             <td>{{$a->artist_name}}</td>
                             <td>{{$a->artist_dom}}</td>
                             <td>

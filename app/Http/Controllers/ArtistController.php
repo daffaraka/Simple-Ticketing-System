@@ -20,7 +20,8 @@ class ArtistController extends Controller
     }
 
     public function store(Request $request)
-    {
+    {   
+        // dd($request->all());
         Artist::create($request->all());
 
         return redirect()->route('artist.index')->with('success', 'Artist baru telah ditambahkan');
