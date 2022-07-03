@@ -54,7 +54,7 @@
                                                                             <td>{{ $data->Ticket->ticket_name }}</td>
                                                                             <td>{{ $data->created_at }}</td>
                                                                             <td>Rp.{{ number_format($data->total)}}</td>
-                                                                            <td>{{ $data->status }}</td>
+                                                                            <td> <a href="{{route('client.methodPembayaran',$data->id_pemesanan)}}" class="btn btn-info">{{ $data->status }} </a> </td>
                                                                             {{-- <td>
                                                                                 <a href="{{ route('ticket.show', $t->id_ticket) }}" class="btn btn-outline-warning">Show</a>
                                                                                 <a href="{{ route('ticket.edit', $t->id_ticket) }}" class="btn btn-dark">Edit</a>

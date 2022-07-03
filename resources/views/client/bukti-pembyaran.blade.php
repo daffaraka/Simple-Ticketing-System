@@ -41,12 +41,18 @@
                                                         </span>
 
                                                     </div>
-                                                    <div class="col-lg-7 col-md-4 col-sm-2 text-end">
-                                                        <h4 class="text-warning">{{ $pemesanan->status }}</h4>
-                                                        {{-- <a href="{{ route('client.buktiPembayaran', $pemesanan->id_pemesanan) }}"
-                                                            class="{{ $pemesanan->status == 'PENDING' ? 'btn btn-warning' : 'btn btn-info' }} rounded px-2">
-                                                            {{ $pemesanan->status == 'PENDING' ? 'Complete your transaction' : 'Done' }}</a> --}}
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-12 p-2 mb-3 card">
+                                                <div class="row px-2">
+                                                    <div class="col-lg-12 col-md-4 col-sm-2">
+                                                       <span> <h5 class="d-inline fw-normal">Payment Code :</h5> <div class="fw-bold d-inline">1235093820 </div>  </span> 
+
+
                                                     </div>
+
                                                 </div>
                                             </div>
                                             @if ($pemesanan->bukti_pembayaran == null)
@@ -56,7 +62,7 @@
 
                                                         {{-- Form Upload --}}
                                                         <form
-                                                            action="{{ route('client.uploadBukti', $pemesanan->id_pemesanan) }}"
+                                                            action="{{ route('client.uploadBukti',$pemesanan->id_pemesanan) }}"
                                                             method="POST" enctype="multipart/form-data">
                                                             @csrf
                                                             <div class="mb-3">
@@ -74,16 +80,21 @@
                                                 </div>
                                             @else
                                                 <div class="col-lg-12 p-2 mb-3">
-                                                    <div class="card">
+                                                    <div class="card mb-3">
                                                         <div class="card-body d-flex justify-content-center">
-                                                            <img class="img" style="widht:auto; max-height:300px" src="{{asset('bukti_pembayaran/'.$pemesanan->bukti_pembayaran)}}" alt="">
-                                                        </div>
-                                                        <div class="card-footer">
-                                                            <h4>Waiting to get confirm</h4>
+                                                            <img class="img" style="widht:auto; max-height:300px"
+                                                                src="{{ asset('bukti_pembayaran/' . $pemesanan->bukti_pembayaran) }}"
+                                                                alt="">
                                                         </div>
                                                     </div>
 
-                                                    
+                                                    <div class="d-grid gap-2">
+                                                        <a href="{{ asset('ticket_image/' . $pemesanan->Ticket->ticket_image) }}" class="btn btn-dark"  download> 
+                                                            Get Your Ticket Here ! 
+                                                        </a>
+    
+                                                    </div>
+                                                 
                                                 </div>
                                             @endif
                                             {{-- Upload Image --}}
@@ -98,10 +109,11 @@
                                                 <img class="img-fluid"
                                                     src="{{ asset('ticket_image/' . $pemesanan->Ticket->ticket_image) }}"
                                                     alt="" style="max-height:300px; width:auto;">
-
+                                               
                                             </div>
-                                            <div class="mb-3">
-
+                                            
+                                            <div class="my-3">
+                                                <h5>{{$pemesanan->Ticket->ticket_name}}</h5>
                                             </div>
                                         </div>
                                     </div>

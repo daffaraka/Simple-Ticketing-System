@@ -67,6 +67,13 @@ class ClientController extends Controller
         return view('client.transaction',compact('pemesanan'));
     }
 
+    public function methodPembayaran($id)   
+    {
+        $pemesanan = Pemesanan::find($id);
+
+        return view('client.method-pembayaran',compact('pemesanan'));
+    }
+
     public function buktiPembayaran($id)
     {
         $pemesanan = Pemesanan::find($id);
@@ -95,6 +102,6 @@ class ClientController extends Controller
 
         $pemesanan->update($pemesananAttr);
 
-        return redirect()->refresh();
+        return redirect()->back();
     }
 }

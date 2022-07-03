@@ -40,9 +40,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ClientController::class, 'profile'])->name('client.profile');
     Route::post('/profile/update', [ClientController::class, 'updateProfile'])->name('client.updateProfile');
     Route::get('/pemesanan', [ClientController::class, 'pemesanan'])->name('client.pemesanan');
-    Route::get('/pemesanan/bukti-pembayaran/{id}',[ClientController::class,'buktiPembayaran'])->name('client.buktiPembayaran');
-    Route::post('/pemesanan/bukti-pembayaran/{id}/upload-bukti',[ClientController::class,'uploadPembayaran'])->name('client.uploadBukti');
-
+    Route::get('/pemesanan/bukti-pembayaran/{id}', [ClientController::class, 'buktiPembayaran'])->name('client.buktiPembayaran');
+    Route::get('/pemesanan/bukti-pembayaran/{id}/methodPembayaran', [ClientController::class, 'methodPembayaran'])->name('client.methodPembayaran');
+    Route::post('/pemesanan/bukti-pembayaran/{id}/upload-bukti', [ClientController::class, 'uploadPembayaran'])->name('client.uploadBukti');
 });
 
 Route::middleware(['role:admin'])->group(function () {
