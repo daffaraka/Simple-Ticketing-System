@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Artist;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ArtistController extends Controller
 {
@@ -22,9 +23,15 @@ class ArtistController extends Controller
     public function store(Request $request)
     {   
         // dd($request->all());
-        Artist::create($request->all());
+        $artistCreate =  Artist::create($request->all());
+        if(!$artistCreate) {
+            Alert::error('Error', 'Whoops! Something wrong!');
+            return redirect()->route('artist.index');
+        } else {
+            Alert::success('Success', 'New Artist data has been aded');
+            return redirect()->route('artist.index');
 
-        return redirect()->route('artist.index')->with('success', 'Artist baru telah ditambahkan');
+        }
     }
 
 

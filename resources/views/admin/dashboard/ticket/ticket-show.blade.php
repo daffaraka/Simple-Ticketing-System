@@ -8,9 +8,7 @@
     <div class="card rounded-0 mt-5 p-4">
         <div class="card-header">
             <h1>{{ $ticket->ticket_name }} </h1>
-            <div class="bg-warning d-inline-block py-1 px-4 mt-3">
-                <h3 class="text-light mb-0">Start from : <span> IDR. {{ number_format($ticket->ticket_price) }}</span></h3>
-            </div>
+          
 
         </div>
         <div class="card-body">

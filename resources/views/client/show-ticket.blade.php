@@ -16,7 +16,7 @@
                     <div class="card-body ">
                         <h2 class="card-title fw-bold">{{ $ticket->ticket_name }}</h2>
                         @foreach ($ticket->TicketCategories as $tc)
-                            <div class="card w-50">
+                            <div class="card w-50 mb-3 shadow">
                                 <a href="{{route('client.createPemesanan',$tc->id_categories)}}" class="text-decoration-none link-dark">
                                     <div class="card-body">
                                         <h3>{{ $tc->ticket_category }}</h3>

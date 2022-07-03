@@ -35,6 +35,38 @@
                                                 <div class="col-lg-12 px-0">
                                                     <div class="row px-2 py-3">
                                                         <div class="col">
+                                                            <table class="table table-dark table-striped shadow">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="px-2">#</th>
+                                                                        <th class="px-2">Guest Name</th>
+                                                                        <th class="px-2">Ticket</th>
+                                                                        <th class="px-2">Order Date</th>
+                                                                        <th class="px-2">Total</th>
+                                                                        <th class="px-2">Status</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody class="table-light">
+                                                                    @foreach ($pemesanan as $data)
+                                                                        <tr>
+                                                                            <td>{{ $loop->iteration }}</td>
+                                                                            <td>{{ $data->nama_pengunjung }}</td>
+                                                                            <td>{{ $data->Ticket->ticket_name }}</td>
+                                                                            <td>{{ $data->created_at }}</td>
+                                                                            <td>Rp.{{ number_format($data->total)}}</td>
+                                                                            <td>{{ $data->status }}</td>
+                                                                            {{-- <td>
+                                                                                <a href="{{ route('ticket.show', $t->id_ticket) }}" class="btn btn-outline-warning">Show</a>
+                                                                                <a href="{{ route('ticket.edit', $t->id_ticket) }}" class="btn btn-dark">Edit</a>
+                                                                                <a href="{{ route('ticket.destroy', $t->id_ticket) }}" class="btn btn-danger">Delete</a>
+                                                                            </td> --}}
+                                                                        </tr>
+                                                                    @endforeach
+                                                
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        {{-- <div class="col">
                                                             <div class="row shadow-sm mb-3">
                                                                 <div class="col-lg-1" style="width:50px;">
                                                                     #
@@ -55,33 +87,10 @@
                                                                     Status
                                                                 </div>
                                                             </div>
-                                                            <div class="row ">
-                                                                @foreach ($pemesanan as $data)
-                                                                    {{-- Data Information --}}
-                                                                    <div class="col-lg-1 mt-2" style="width:50px;">
-                                                                        {{ $loop->iteration }}
-                                                                    </div>
-                                                                    <div class="col-lg-2  mt-2">
-                                                                        {{ $data->nama_pengunjung }}
-                                                                    </div>
-                                                                    <div class="col-lg-3 mt-2">
-                                                                        {{ $data->Ticket->ticket_name }}
-                                                                    </div>
-                                                                    <div class="col-lg-2 mt-2">
-                                                                        {{ $data->created_at->todatestring() }}
-                                                                    </div>
-                                                                    <div class="col-lg-2 mt-2">
-                                                                        Rp.{{ number_format($data->total) }}
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <a href="{{ route('client.buktiPembayaran', $data->id_pemesanan) }}"
-                                                                            class="{{ $data->status == 'PENDING' ? 'btn btn-warning' : 'btn btn-info' }} rounded px-2">
-                                                                            {{ $data->status == 'PENDING' ? 'Complete your transaction' : 'Done' }}</a>
-
-                                                                    </div>
-                                                                @endforeach
-                                                            </div>
-                                                        </div>
+                                                            <div class="row "> --}}
+                                                              
+                                                            {{-- </div>
+                                                        </div> --}}
                                                         {{-- Caption Information --}}
 
 

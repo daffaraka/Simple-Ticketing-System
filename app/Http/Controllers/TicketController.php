@@ -55,10 +55,10 @@ class TicketController extends Controller
         $ticketCreate =  Ticket::create($ticketAttribute);
 
         if(!$ticketCreate) {
-            Alert::error('Error Message', 'Optional Title');
+            Alert::error('Error', 'Whoops! Something wrong!');
             return redirect()->route('ticket.create');
         } else {
-            Alert::success('Success Message', 'Optional Title');
+            Alert::success('Success', 'New ticket has been aded');
             return redirect()->route('ticket.index');
         }
     }

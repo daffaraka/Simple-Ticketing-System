@@ -20,15 +20,7 @@ class TransactionController extends Controller
         $this->middleware(['auth']);
      
     }
-    public function creatTransaction(Request $request)
-    {
-        dd($request->all());
-        Transaction::create($request->all);
-
-        return redirect()->route('home');
-    }
-
-
+  
     public function viewPemesanan($id, Request $request)
     {
 
@@ -57,11 +49,11 @@ class TransactionController extends Controller
         
         $createPemesanan = Pemesanan::create($pemesananAttr);
         if (!$createPemesanan) {
-            Alert::error('Error Message', 'Optional Title');
+            Alert::error('Error', 'Theres\s something wrong!');
             return redirect()->route('client.showTicket', ['id_ticket' => $ticket->id_ticket]);
         } else {
-            Alert::success('Success Message', 'Optional Title');
-            return redirect()->route('ticket.index');
+            Alert::success('Success', 'New order has been added');
+            return redirect()->route('client.pemesanan');
         }
     }
 }
