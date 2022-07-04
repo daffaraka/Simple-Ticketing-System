@@ -45,11 +45,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/pemesanan/bukti-pembayaran/{id}/upload-bukti', [ClientController::class, 'uploadPembayaran'])->name('client.uploadBukti');
 });
 
-Route::middleware(['role:admin'])->group(function () {
+Route::middleware(['auth','role:admin'])->group(function () {
     Route::prefix('dashboard')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::get('artist', [ArtistController::class, 'index'])->name('artist.index');
+        Route::get('artist/artistDataTable', [ArtistController::class, 'artistDataTable'])->name('artist.artistDataTable');
+
         Route::get('artist/create', [ArtistController::class, 'create'])->name('artist.create');
         Route::post('artist/store', [ArtistController::class, 'store'])->name('artist.store');
         Route::get('artist/show/{id}', [ArtistController::class, 'show'])->name('artist.show');
