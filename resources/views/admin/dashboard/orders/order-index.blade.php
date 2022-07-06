@@ -5,7 +5,7 @@
     <a href="{{route('order.export')}}" class="btn btn-dark ms-0"><i class="fa fa-print"></i>  Export Excel</a>
     <div class="row mb-2 justify-content-center">
         <div class="col-lg-12 col-md-6 p-2">
-           <table class="table table-dark table-striped text-start shadow">
+           <table id="data-table-list" class="table table-dark table-striped text-start shadow">
                <thead>
                    <tr>
                        <th class="px-2">#</th>
@@ -15,28 +15,12 @@
                        <th class="px-2">Total </th>
                        <th class="px-2">Proof of Payment</th>
                        <th class="px-2">Status</th>
+                       <th class="px-2">Action</th>
                    </tr>
                </thead>
                <tbody class="table-dark">
                   
-                   @foreach ($order as $o)
-                        <tr>
-                            <td>{{$loop->iteration++}}</td>
-                            <td>{{$o->nama_pengunjung}}</td>
-                            <td>{{$o->jumlah_ticket}}</td>
-                            <td> <span class="btn btn-info px-2 py-2"> {{$o->Ticket->ticket_name}} - {{$o->TicketCategory->ticket_category}}  </span> </td>
-                            <td>Rp. {{number_format($o->total)}}</td>
-                            <td> <img class="img-thumbnail" style="width: 100px;" src="{{asset('bukti_pembayaran/'.$o->bukti_pembayaran)}}" alt=""></td>
-                            <td> <span class="btn btn-light  px-2 py-2"> {{$o->status}}</span> </td>
-                            {{-- <td>{{$a->id_artist}}</td>
-                            <td>{{$a->artist_name}}</td>
-                            <td>{{$a->artist_dom}}</td>
-                            <td>
-                                <a href="{{route('artist.edit',$a->id_artist)}}" class="btn btn-dark">Edit</a>
-                                <a href="{{route('artist.destroy',$a->id_artist)}}" class="btn btn-danger">Delete</a>
-                            </td> --}}
-                        </tr>
-                   @endforeach
+               
                   
                </tbody>
            </table>
@@ -45,3 +29,65 @@
 </div>
   
 @endsection
+@push('script')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        });
+        $(document).ready(function() {
+            var i = 1;
+            $('#data-table-list').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('order.index') }}",
+                    type: 'GET'
+                },
+                columns: [{
+                        data: 'id_pemesanan',
+                        name: 'id_pemesanan' 
+                    },
+                    {
+                        data: 'nama_pengunjung',
+                        name: 'nama_pengunjung',
+                    },
+                    {
+                        data: 'jumlah_ticket',
+                        name: 'jumlah_ticket'
+                    },
+                    {
+                        data: 'ticket.ticket_name',
+                        name: 'ticket.ticket_name'
+                    },
+                    {
+                        data: 'total',
+                        name: 'total',
+                        render: $.fn.dataTable.render.number( ',', '.','', 'Rp.' )
+                    },
+                    {
+                        data: 'bukti_pembayaran',
+                        render: function(data, type, row, meta) {
+                            return '<img src="{{ asset('bukti_pembayaran') }}/' + data +
+                                '" class="img-thumbnail" class="m-3 mx-auto d-block" style="height:200px" />';
+                        },
+                        name: 'bukti_pembayaran'
+                    },
+                    {
+                        data: 'status',
+                        name: 'status'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action'
+                    }
+
+
+                ]
+            });
+        });
+    </script>
+@endpush

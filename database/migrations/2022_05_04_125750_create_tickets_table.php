@@ -20,11 +20,15 @@ class CreateTicketsTable extends Migration
             $table->string('ticket_image');
             $table->unsignedBigInteger('id_artist');
             $table->unsignedBigInteger('id_venue');
+            $table->unsignedBigInteger('id_user');
+
             $table->timestamps();
 
 
             $table->foreign('id_artist')->references('id_artist')->on('artists')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_venue')->references('id_venue')->on('venues')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

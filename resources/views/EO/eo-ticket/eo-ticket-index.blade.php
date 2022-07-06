@@ -2,16 +2,10 @@
 <title>Ticket Management</title>
 @section('content')
     <div class="container p-5 py-1">
-
+    
+        
         <div class="row p-2">
-            @if (count($ticket) == 0)
-            <div class="card shadow">
-                <div class="card-body text-center">
-                   <i class="fas fa-sad-tear fa-4x  mb-2"></i>  <h3>EO's didn't added ticket yet</h3>
-                </div>
-            </div>
-             
-            @else 
+        <a href="{{route('eo.ticket.create')}}" class="btn btn-primary w-auto">Add New Ticket</a>    
             <table id="data-table-list" class="table table-dark table-striped shadow mb-3">
                 <thead>
                     <tr>
@@ -21,7 +15,6 @@
                         <th class="px-2">Venue</th>
                         <th class="px-2">EO Manager</th>
                         <th class="px-2">Concert Date</th>
-                        <th class="px-2">Ticket Image</th>
                         <th class="px-2">Action</th>
                     </tr>
                 </thead>
@@ -31,8 +24,6 @@
                 </tbody>
             </table>
 
-            @endif
-         
         </div>
     </div>
 
@@ -70,11 +61,14 @@
         $(document).ready(function() {
             var i = 1;
             $('#data-table-list').DataTable({
+                renderer: {
+               
+                    "pageButton": "bootstrap"
+                },
                 processing: true,
                 serverSide: true,
-
                 ajax: {
-                    url: "{{ route('ticket.index') }}",
+                    url: "{{ route('eo.ticket.index') }}",
                     type: 'GET'
                 },
                 columns: [{
@@ -100,14 +94,6 @@
                     {
                         data: 'concert_date',
                         name: 'concert_date'
-                    },
-                    {
-                        data: 'ticket_image',
-                        render: function(data, type, row, meta) {
-                            return '<img src="{{ asset('ticket_image') }}/' + data +
-                                '" class="img-thumbnail border-0" />';
-                        },
-                        name: 'ticket_image'
                     },
                     {
                         data: 'action',

@@ -30,5 +30,13 @@ class UserSeeder extends Seeder
 
         $user->assignRole('user');
 
+        $eo = User::create([
+            'name' => 'EO Management',
+            'email' => 'eo@gmail.com',
+            'password' => bcrypt('12345678')
+        ]);
+
+        $eo->assignRole('EO');
+
     }
 }

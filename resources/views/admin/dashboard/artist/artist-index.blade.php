@@ -17,7 +17,7 @@
                             <th class="px-2">Action</th>
                         </tr>
                     </thead>
-                    <tbody class="table-light">
+                    <tbody class="table-dark table-striped shadow">
 
                         {{-- @foreach ($artist as $a)
                         <tr>
@@ -56,9 +56,7 @@
                     type: 'GET'
                 },
                 columns: [{
-                        "render": function() {
-                            return i++;
-                        },
+                       data : 'id_artist',
                         name: 'id_artist'
                     },
                     {

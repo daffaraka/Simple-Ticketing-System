@@ -18,8 +18,12 @@ class CreatePemesanansTable extends Migration
             $table->string('nama_pengunjung');
             $table->string('email_pengunjung');
             $table->integer('nomor_pengunjung');
+            $table->string('nomor_identitas');
+            $table->string('type_identitas');
+            $table->string('gambar_identitas');
             $table->integer('jumlah_ticket');
             $table->integer('total');
+          
             $table->unsignedBigInteger('id_ticket');
             $table->unsignedBigInteger('id_ticket_category');
             $table->unsignedBigInteger('id_user');

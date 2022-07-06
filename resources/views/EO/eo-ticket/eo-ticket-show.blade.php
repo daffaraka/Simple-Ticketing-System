@@ -14,6 +14,8 @@
         <div class="card-body">
             <h4 class="card-title">{{ $ticket->Venues->venue_name }}</h4>
             <p class="card-text">{{ \Carbon\Carbon::parse($ticket->concert_date)->format('j F, Y') }}</p>
+            <a href="{{ route('ticketCategory.create', $ticket->id_ticket) }}" class="btn btn-outline-success">Add new
+                category ticket</a>
             <br>
             @foreach ($ticket->TicketCategories as $tc)
                 <div class="btn btn-warning text-start w-auto ">{{ $tc->ticket_category }} <span

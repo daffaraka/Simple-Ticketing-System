@@ -11,32 +11,38 @@ class Ticket extends Model
 
     protected $primaryKey = 'id_ticket';
 
-    protected $fillable = 
+    protected $fillable =
     [
         'ticket_name',
         'concert_date',
         'ticket_image',
         'id_artist',
         'id_venue',
+        'id_user',
     ];
 
     protected $casts = [
         'concert_date' => 'date:Y-m-d',
-       
-     ];
+
+    ];
 
     //method
-    public function Venues ()
+    public function Venues()
     {
-        return $this->belongsTo(Venue::class,'id_venue');
+        return $this->belongsTo(Venue::class, 'id_venue');
     }
-    public function Artists ()
+    public function Artists()
     {
-        return $this->belongsTo(Artist::class,'id_artist');
+        return $this->belongsTo(Artist::class, 'id_artist');
+    }
+
+    public function Users()
+    {
+        return $this->belongsTo(User::class, 'id_user');
     }
 
     public function TicketCategories()
     {
-        return $this->hasMany(TicketCategory::class,'id_ticket');
+        return $this->hasMany(TicketCategory::class, 'id_ticket');
     }
 }

@@ -8,7 +8,8 @@
             </div> --}}
 
             <div class="col-lg-6">
-                <form action="{{route('client.createPemesanan',$ticketCategories->id_categories)}}" class="pe-3" method="POST">
+                <form action="{{ route('client.createPemesanan', $ticketCategories->id_categories) }}" enctype="multipart/form-data" class="pe-3"
+                    method="POST">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Guest Name</label>
@@ -16,17 +17,35 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Guest Phone Number</label>
-                        <input class="form-control shadow" type="text" name="nomor_pengunjung" placeholder="Guest Number">
+                        <input class="form-control shadow" type="text" name="nomor_pengunjung"
+                            placeholder="Guest Number">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Email</label>
                         <input class="form-control shadow" type="text" name="email_pengunjung" placeholder="Email">
                     </div>
                     <div class="mb-3">
+                        <label class="form-label">Identity Number</label>
+                        <input class="form-control shadow" type="number" name="nomor_identitas" placeholder="Your Identity">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Identity Type</label>
+                        <select name="type_identitas" class="form-control">
+                            <option value="KTP">KTP</option>
+                            <option value="NIK">NIK</option>
+                            <option value="Passport">Passport</option>
+
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Identity Pict  </label>
+                        <input class="form-control" type="file" name="gambar_identitas">
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label">Price</label>
                         <div class="card">
                             <div class="card-body shadow text-dark">
-                                <h6>{{$ticketCategories->ticket_category}}</h6>
+                                <h6>{{ $ticketCategories->ticket_category }}</h6>
                                 <div class="white-line"></div>
                                 <h5 class="card-title">Rp. {{ number_format($ticketCategories->ticket_price) }}</h5>
 
@@ -66,7 +85,7 @@
 
 
             </div>
-           
+
         </div>
 
 

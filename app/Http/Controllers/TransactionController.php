@@ -32,13 +32,28 @@ class TransactionController extends Controller
 
     public function createPemesanan($id, Request $request)
     {
+     
        
+
+        $file = $request->file('gambar_identitas');
+        $filename = $file->getClientOriginalName();
+       
+        $extension = $file->getClientOriginalExtension();
+
+        //uploaded location
+        $location = "Identitas Pengunjung";
+
+        //uploaded file
+        $file->move($location, $request->nama_pengunjung.'-'.$filename);
         $ticket = TicketCategory::with('Ticket')->find($id);
         $ticketCategories = TicketCategory::find($id);
         $pemesananAttr = [];
         $pemesananAttr['nama_pengunjung'] = $request->nama_pengunjung;
         $pemesananAttr['nomor_pengunjung'] = $request->nomor_pengunjung;
         $pemesananAttr['email_pengunjung'] = $request->email_pengunjung;
+        $pemesananAttr['nomor_identitas'] = $request->nomor_identitas;
+        $pemesananAttr['type_identitas'] = $request->type_identitas;
+        $pemesananAttr['gambar_identitas'] = $request->nama_pengunjung.'-'.$filename;
         $pemesananAttr['jumlah_ticket'] = 1;
         $pemesananAttr['total'] = $ticketCategories->ticket_price;
         $pemesananAttr['id_ticket'] = $ticketCategories->Ticket->value('id_ticket');

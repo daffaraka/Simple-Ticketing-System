@@ -2,18 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Venue;
 use App\Models\Artist;
 use App\Models\Ticket;
-use App\Models\Venue;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Yajra\DataTables\Facades\DataTables;
 
 class TicketController extends Controller
 {
     
     public function index()
     {
-        $ticket = Ticket::with(['Venues','Artists'])->get();
+        $ticket = Ticket::with(['Venues','Artists','TicketCategories','Users'])->get();
+        if (request()->ajax()) {
+
+            return DataTables::of($ticket)->addColumn('action', function ($data) {
+            $button =' <a href="ticket/'.$data->id_ticket.' " data-toggle="tooltip"  data-id="' . $data->id_ticket . '" data-original-title="Show" class="show btn btn-success px-3 show-post"><i class="far fa-edit"></i> Show Detail</a>';
+                $button .= '&nbsp;&nbsp;';
+                // $button .= '<a href="ticket/edit/'.$data->id_ticket.' " data-toggle="tooltip"  data-id="' . $data->id_ticket . '" data-original-title="Edit" class="edit btn btn-sm btn-warning edit-post"><i class="far fa-edit"></i> Edit</a>';
+                // $button .= '&nbsp;&nbsp;';
+                // $button .= '<a href="ticket/delete/'.$data->id_ticket.'" name="delete" id="' . $data->id_ticket . '" class="delete btn btn-sm btn-danger "><i class="far fa-trash-alt"></i> Delete</a>';
+                return $button;
+            })
+                ->rawColumns(['action'])
+                ->addIndexColumn()
+                ->make(true);
+        };
         return view('admin.dashboard.ticket.ticket-index',compact('ticket'));
     }
 

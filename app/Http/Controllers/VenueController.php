@@ -4,12 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\Venue;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+use Yajra\DataTables\Facades\DataTables;
 
 class VenueController extends Controller
 {
     public function index()
     {
+        $i = 1;
         $venue = Venue::all();
+        if (request()->ajax()) {
+
+            return DataTables::of($venue)->addColumn('action', function ($data) {
+                $button = '<a href="venues/edit/'.$data->id_venue.' " data-toggle="tooltip"  data-id="' . $data->id_venue . '" data-original-title="Edit" class="edit btn btn-sm btn-warning btn-xs edit-post"><i class="far fa-edit"></i> Edit</a>';
+                $button .= '&nbsp;&nbsp;';
+                // $button .= '<button type="button" name="detail" id="'.$data->id.'" class="detail btn btn-info btn-xs"><i class="fas fa-info-circle"></i> Detail</button>';
+                // $button .= '&nbsp;&nbsp;';
+                $button .= '<a href="venues/delete/'.$data->id_venue.'" name="delete" id="' . $data->id_venue . '" class="delete btn btn-danger btn-xs"><i class="far fa-trash-alt"></i> Delete</a>';
+                return $button;
+            })
+                ->rawColumns(['action'])
+                ->addIndexColumn()
+                ->make(true);
+        };
         return view('admin.dashboard.venue.venue-index',compact('venue'));
     }
 
@@ -42,6 +59,14 @@ class VenueController extends Controller
         $venueAttribute['venue_pict'] = $request->venue_name.'-'.$filename;
 
         Venue::create($venueAttribute);
+
+        if(!$venueAttribute) {
+            Alert::error('Error', 'Whoops! Something wrong!');
+            return redirect()->route('venues.create');
+        } else {
+            Alert::success('Success', 'New venue has been aded');
+            return redirect()->route('venues.index');
+        }
 
         return redirect()->route('venues.index');
     }

@@ -39,9 +39,24 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Grape+Nuts&family=Montserrat:wght@100&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Staatliches&display=swap"
         rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <link href="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/css/dataTables.jqueryui.min.css"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.jqueryui.min.js"></script>
+    <style>
+        .dataTables_filter {
+            float: right !important;
+            margin-right: 5px;
+            padding-top: 5px;
+        }
+
+        .dataTables_length {
+            display: inline !important;
+
+        }
+
+    </style>
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 </head>
 
