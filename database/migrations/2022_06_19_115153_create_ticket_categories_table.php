@@ -17,6 +17,7 @@ class CreateTicketCategoriesTable extends Migration
             $table->bigIncrements('id_categories');
             $table->string('ticket_category');
             $table->integer('ticket_price');
+            $table->string('e_ticket');
             $table->unsignedBigInteger('id_ticket');
             $table->timestamps();
 

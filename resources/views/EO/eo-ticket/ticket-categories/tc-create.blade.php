@@ -1,10 +1,10 @@
 @extends('admin.layout.layout-main')
-@section('title', 'Add Ticket Category')
+<title>Add new ticket categories</title>
 @section('content')
     <div class="container">
         <div class="row p-2">
             <div class="col-lg-8 bg-white p-4 mx-5 rounded shadow">
-                <form method="post" action="{{ route('ticketCategory.store',$ticket->id_ticket) }}">
+                <form method="post" action="{{ route('ticketCategory.store',$ticket->id_ticket) }}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <div class="label fw-bold mb-2">Ticket Name</div>
@@ -25,6 +25,10 @@
                     <div class="mb-3">
                         <div class="label fw-bold mb-2">Ticket Category Name</div>
                         <input class="form-control" type="text" name="ticket_category" id="ticket_category">
+                    </div>
+                    <div class="mb-3">
+                        <div class="label fw-bold mb-2">E ticket</div>
+                        <input class="form-control" type="file" name="e_ticket" id="ticket_category">
                     </div>
                    
                     <div class="mb-3">

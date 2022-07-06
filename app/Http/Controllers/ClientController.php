@@ -76,7 +76,8 @@ class ClientController extends Controller
 
     public function buktiPembayaran($id)
     {
-        $pemesanan = Pemesanan::find($id);
+        $pemesanan = Pemesanan::with(['TicketCategory'])->find($id);
+       
         return view('client.bukti-pembyaran',compact('pemesanan'));
     }
 

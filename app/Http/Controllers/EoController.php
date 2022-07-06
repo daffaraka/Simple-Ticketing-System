@@ -121,17 +121,16 @@ class EoController extends Controller
         $ticketAttribute['ticket_name'] = $request->ticket_name;
         $ticketAttribute['concert_date'] = $request->concert_date;
         $ticketAttribute['ticket_image'] = $request->ticket_name . '-' . $filename;
-
-        $ticket->delete(public_path('ticket_image',$ticket->ticket_image));
+        
 
         $ticketUpdate =  $ticket->update($ticketAttribute);
 
         if (!$ticketUpdate) {
             Alert::error('Error', 'Whoops! Something wrong!');
-            return redirect()->route('ticket.create');
+            return redirect()->route('eo.ticket.create');
         } else {
             Alert::success('Success', 'New ticket has been aded');
-            return redirect()->route('ticket.index');
+            return redirect()->route('eo.ticket.index');
         }
     }
 
@@ -143,11 +142,11 @@ class EoController extends Controller
             $ticket->delete(public_path('ticket',$ticket->ticket_image));
             $ticketDelete =  $ticket->delete();
             if(!$ticketDelete){
-                Alert::failed('Error', 'There something wrong with your data');
-                return redirect()->route('ticket.index');
+                Alert::success('Success', 'Data has been deleted');
+                return redirect()->route('eo.ticket.index');
             } else{
-                Alert::success('Success', 'Data deleted');
-              return redirect()->route('ticket.index');
+                Alert::error('Error', 'Something wrong');
+              return redirect()->route('eo.ticket.index');
             }
         }
     }

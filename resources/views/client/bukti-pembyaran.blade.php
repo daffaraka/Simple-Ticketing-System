@@ -79,17 +79,17 @@
                                                     </div>
                                                 </div>
                                             @else
-                                                <div class="col-lg-12 p-2 mb-3">
+                                                <div class="col-lg-12 mb-3">
                                                     <div class="card mb-3">
                                                         <div class="card-body d-flex justify-content-center">
-                                                            <img class="img" style="widht:auto; max-height:300px"
+                                                            <img class="img-thumbnail" style="widht:auto; max-height:300px"
                                                                 src="{{ asset('bukti_pembayaran/' . $pemesanan->bukti_pembayaran) }}"
                                                                 alt="">
                                                         </div>
                                                     </div>
-
+                                                   
                                                     <div class="d-grid gap-2">
-                                                        <a href="{{ asset('ticket_image/' . $pemesanan->Ticket->ticket_image) }}" class="btn btn-dark"  download> 
+                                                        <a href="{{ asset('ETicket/'.$pemesanan->TicketCategory->e_ticket) }}" class="btn btn-dark"  download> 
                                                             Get Your Ticket Here ! 
                                                         </a>
     

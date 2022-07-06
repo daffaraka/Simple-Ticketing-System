@@ -14,12 +14,18 @@ class TicketCategory extends Model
     [
         'ticket_category',
         'ticket_price',
+        'e_ticket',
         'id_ticket',
     ];
 
     public function Ticket()
     {
         return $this->belongsTo(Ticket::class,'id_ticket');
+    }
+
+    public function TicketImage()
+    {
+        return $this->hasOne(TicketImage::class);
     }
 
 }
