@@ -27,13 +27,13 @@
                         </li>
 
                         <li>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-
-                                <button type="submit">
-                                    {{ __('Log Out') }}
-                                </button>
-                            </form>
+                            <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();"
+                                    class="dropdown-item"> Logout </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                         </li>
 
                     </ul>

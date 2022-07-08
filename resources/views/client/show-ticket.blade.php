@@ -1,7 +1,7 @@
 @extends('client.client-layout')
 @section('content')
     <div class="container">
-        <div class="row mt-5 d-flex justify-content-center">
+        <div class="row mt-5 mb-5 d-flex justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <img class="card-img" src="{{ asset('ticket_image/' . $ticket->ticket_image) }}" alt="">
