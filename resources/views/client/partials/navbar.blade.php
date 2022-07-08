@@ -1,7 +1,7 @@
-<header class="bg-dark" style="font-size: 24px;">
+<header >
     <nav id="navbar" class="container navbar px-3 ">
 
-        <a class="navbar-brand" href="{{ route('client.index') }}" style="font-size:28px;">Widya F</a>
+        <a id="brand" href="{{ route('client.index') }}" style="font-size: 30px;" >Playfest</a>
         <ul class="nav nav-pills">
             {{-- <li class="nav-item">
             <a class="nav-link" href="#scrollspyHeading1">First</a>

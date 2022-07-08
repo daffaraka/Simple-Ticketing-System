@@ -8,6 +8,10 @@ body {
     background-color: rgb(217, 217, 240) !important;
 }
 
+header {
+    font-size: 24px; background-image: linear-gradient(to right, #00E5FF, #1200FF);
+}
+
 .row-bg {
     background: url('../images/concert.jpg');
     width: 100%;
@@ -57,6 +61,24 @@ body {
     font-weight: 700;
 }
 
+
+
+#brand {
+    font-size: 30px !important;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+
+#brand:hover {
+    transition: 0.3s;
+    color: rgb(142, 67, 212);
+}
+
+#navbar a {
+    color: aliceblue;
+}
+
 #nav ul {
     display: inline;
     text-decoration: none;
@@ -77,16 +99,19 @@ body {
    
 }
 
-#nav li a:hover {
+#navbar li a:hover {
     color: rgb(142, 67, 212);
 }
+
+
 .a-link {
     text-decoration: none;
     color: unset;
 }
 
 .a-link:hover {
-    color: red;
+    color: rgb(123, 99, 148);
+
     box-shadow: 30px 30px lightblue; ;
 }
 
