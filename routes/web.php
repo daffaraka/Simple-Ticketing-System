@@ -4,6 +4,7 @@ use App\Http\Controllers\ArtistController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Eo_NIBController;
 use App\Http\Controllers\EoController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RoleController;
@@ -111,6 +112,14 @@ Route::middleware(['auth', 'role:admin|EO'])->group(function () {
                 Route::get('ticket-management/delete/{id}', [EoController::class, 'destroy'])->name('eo.ticket.destroy');
                 Route::get('ticket-management/{id}/create-category', [TicketCategoryController::class, 'create'])->name('ticketCategory.create');
                 Route::post('ticket-management/{id}/store-category', [TicketCategoryController::class, 'store'])->name('ticketCategory.store');
+
+                Route::get('NIB', [Eo_NIBController::class, 'index'])->name('eo.nib.index');
+                Route::post('NIB-management/store', [Eo_NIBController::class, 'store'])->name('eo.nib.store');
+                Route::get('NIB-management/{id}', [Eo_NIBController::class, 'show'])->name('eo.nib.show');
+                Route::get('NIB-management/edit/{id}', [Eo_NIBController::class, 'edit'])->name('eo.nib.edit');
+                Route::post('NIB-management/update/{id}', [Eo_NIBController::class, 'update'])->name('eo.nib.update');
+                Route::get('NIB-management/delete/{id}', [Eo_NIBController::class, 'destroy'])->name('eo.nib.destroy');
+                
             });
         });
     });

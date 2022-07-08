@@ -5,8 +5,8 @@
             @foreach ($ticket as $t)
                 <div class="col-md-4 p-3" style="margin-top: 14px">
                     <a href="{{route('client.showTicket',$t->id_ticket)}}" class="a-link p-1">
-                        <div class="card rounded">
-                            <img class="ticket-image rounded-top" style="height: 346px;" src="{{ asset('ticket_image/'.$t->ticket_image) }}"
+                        <div class="card rounded shadow">
+                            <img class="ticket-image rounded-top p-3" style="height: 346px;" src="{{ asset('ticket_image/'.$t->ticket_image) }}"
                                 alt="">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $t->ticket_name }}</h5>
@@ -14,10 +14,10 @@
                                 <span>
                                     <h6> {{ $t->Venues->venue_location }} </h6>
                                 </span>
-                                <span> {{ \Carbon\Carbon::parse($t->concert_date)->diffForHumans() }}</span>
+                                <span> {{ \Carbon\Carbon::parse($t->concert_date)->toDateString() }}</span>
                             </div>
                             <div class="card-footer mb-0 d-flex">
-                                <span class="px-4">Ticket available now</span>
+                                <span>Ticket available now</span>
                             </div>
                         </div>
                     </a>

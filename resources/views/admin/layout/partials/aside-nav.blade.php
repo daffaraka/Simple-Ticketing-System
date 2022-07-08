@@ -17,7 +17,8 @@
 
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link {{ request()->is(['dashboard']) ? 'active fw-bold' : '' }} " href="{{ route('dashboard') }}">
+                <a class="nav-link {{ request()->is(['dashboard']) ? 'active fw-bold' : '' }} "
+                    href="{{ route('dashboard') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
@@ -25,9 +26,10 @@
                     <span class="nav-link-text ms-1">Dashboard</span>
                 </a>
             </li>
+
             @if (auth()->user()->hasRole('admin'))
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is(['dashboard/artist','dashboard/artist/create']) ? 'active fw-bold' : '' }}"
+                    <a class="nav-link {{ request()->is(['dashboard/artist', 'dashboard/artist/create']) ? 'active fw-bold' : '' }}"
                         href="{{ route('artist.index') }}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -37,7 +39,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is(['dashboard/venues','dashboard/venues/create']) ? 'active fw-bold' : '' }}"
+                    <a class="nav-link {{ request()->is(['dashboard/venues', 'dashboard/venues/create']) ? 'active fw-bold' : '' }}"
                         href="{{ route('venues.index') }}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -85,16 +87,7 @@
                 <span class="nav-link-text ms-1">Roles Management</span>
               </a>
             </li> --}}
-                <li class="nav-item">
-                    <a class="nav-link " href="#">
-                        <div
-                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="ni ni-paper-diploma text-primary text-sm opacity-10"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">Report</span>
-                    </a>
-                </li>
-
+             
             @elseif (auth()->user()->hasRole('EO'))
                 <li class="nav-item">
                     <a class="nav-link {{ request()->is('dashboard/eo/ticket-management') ? 'active fw-bold' : '' }}"
@@ -104,6 +97,16 @@
                             <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
                         </div>
                         <span class="nav-link-text ms-1">Your Ticket</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('dashboard/eo/NIB') ? 'active fw-bold' : '' }}"
+                        href="{{ route('eo.nib.index') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-collection text-danger text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Data NIB</span>
                     </a>
                 </li>
             @endif
@@ -134,5 +137,5 @@
 
 
 
-        
+
 </aside>

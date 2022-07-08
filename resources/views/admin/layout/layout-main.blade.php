@@ -60,10 +60,10 @@
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 </head>
 
-<body class="g-sidenav-show bg-gray-100">
-    <div class="min-height-300 position-absolute w-100"
-        style=" background-image: linear-gradient(to right, #00E1FD, #FC007A);"></div>
-
+<body class="g-sidenav-show" style="background:url({{asset('background/concert.jpeg')}});">
+    <div class="min-height-300 position-absolute w-100 bg-gray-900"
+        ></div>
+        {{-- style=" background-image: linear-gradient(to right, #00E1FD, #FC007A);" --}}
     {{-- Aside navigation bar --}}
 
     @include('admin.layout.partials.aside-nav')

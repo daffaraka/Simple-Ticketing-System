@@ -20,11 +20,11 @@ class EoController extends Controller
         if (request()->ajax()) {
 
             return DataTables::of($ticket)->addColumn('action', function ($data) {
-            $button =' <a href="ticket-management/'.$data->id_ticket.' " data-toggle="tooltip"  data-id="' . $data->id_ticket . '" data-original-title="Show" class="show btn btn-success px-3 show-post"><i class="far fa-edit"></i> Show Detail</a>';
+            $button =' <a href="ticket-management/'.$data->id_ticket.' " data-toggle="tooltip"  data-id="' . $data->id_ticket . '" data-original-title="Show" class="show btn btn-sm btn-success px-3 show-post"><i class="far fa-edit"></i> Detail</a>';
                 $button .= '&nbsp;&nbsp;';
-                $button .= '<a href="ticket-management/edit/'.$data->id_ticket.' " data-toggle="tooltip"  data-id="' . $data->id_ticket . '" data-original-title="Edit" class="edit btn btn btn-warning edit-post"><i class="far fa-edit"></i> Edit</a>';
+                $button .= '<a href="ticket-management/edit/'.$data->id_ticket.' " data-toggle="tooltip"  data-id="' . $data->id_ticket . '" data-original-title="Edit" class="edit btn btn-sm btn btn-warning px-2 edit-post"><i class="far fa-edit"></i> Edit</a>';
                 $button .= '&nbsp;&nbsp;';
-                $button .= '<a href="ticket-management/delete/'.$data->id_ticket.'" name="delete" id="' . $data->id_ticket . '" class="delete btn btn-danger "><i class="far fa-trash-alt"></i> Delete</a>';
+                $button .= '<a href="ticket-management/delete/'.$data->id_ticket.'" name="delete" id="' . $data->id_ticket . '" class="delete btn btn-sm px-2 btn-danger "><i class="far fa-trash-alt"></i> Delete</a>';
                 return $button;
             })
                 ->rawColumns(['action'])

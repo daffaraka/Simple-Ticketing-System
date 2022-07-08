@@ -108,7 +108,7 @@ class TicketController extends Controller
             $ticket->delete(public_path('ticket',$ticket->ticket_image));
             $ticketDelete =  $ticket->delete();
             if(!$ticketDelete){
-                Alert::failed('Error', 'There something wrong with your data');
+                Alert::error('Error', 'There something wrong with your data');
                 return redirect()->route('ticket.index');
             } else{
                 Alert::success('Success', 'Data deleted');

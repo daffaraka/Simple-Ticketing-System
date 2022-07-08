@@ -1,31 +1,34 @@
 @extends('admin.layout.layout-main')
 <title>Ticket Management</title>
 @section('content')
-    <div class="container p-5 py-1">
-    
-        
-        <div class="row p-2">
-        <a href="{{route('eo.ticket.create')}}" class="btn btn-primary w-auto">Add New Ticket</a>    
-            <table id="data-table-list" class="table table-dark table-striped shadow mb-3">
-                <thead>
-                    <tr>
-                        <th class="px-2">#</th>
-                        <th class="px-2">Ticket Name</th>
-                        <th class="px-2">Artist Name</th>
-                        <th class="px-2">Venue</th>
-                        <th class="px-2">EO Manager</th>
-                        <th class="px-2">Concert Date</th>
-                        <th class="px-2">Action</th>
-                    </tr>
-                </thead>
-                <tbody class="table-dark table-striped shadow">
+    <div class="p-1">
+        <div class="container bg-gray-200 p-5 py-3 rounded">
 
 
-                </tbody>
-            </table>
+            <div class="row p-2">
+                <a href="{{ route('eo.ticket.create') }}" class="btn btn-primary w-auto">Add New Ticket</a>
+                <table id="data-table-list" class="table table-dark table-striped shadow mb-3">
+                    <thead>
+                        <tr>
+                            <th class="px-2">#</th>
+                            <th class="px-2">Ticket Name</th>
+                            <th class="px-2">Artist Name</th>
+                            <th class="px-2">Venue</th>
+                            <th class="px-2">EO Manager</th>
+                            <th class="px-2">Concert Date</th>
+                            <th class="px-2">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-dark table-striped shadow">
 
+
+                    </tbody>
+                </table>
+
+            </div>
         </div>
     </div>
+
 
 
     {{-- @foreach ($ticket as $t)
@@ -62,7 +65,7 @@
             var i = 1;
             $('#data-table-list').DataTable({
                 renderer: {
-               
+
                     "pageButton": "bootstrap"
                 },
                 processing: true,
