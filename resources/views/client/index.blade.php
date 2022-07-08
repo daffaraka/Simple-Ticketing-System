@@ -5,10 +5,10 @@
             @foreach ($ticket as $t)
                 <div class="col-md-4 p-3" style="margin-top: 14px">
                     <a href="{{route('client.showTicket',$t->id_ticket)}}" class="a-link p-1">
-                        <div class="card rounded shadow">
+                        <div class="card rounded-0 shadow">
                             <img class="ticket-image rounded-top p-3" style="height: 346px;" src="{{ asset('ticket_image/'.$t->ticket_image) }}"
                                 alt="">
-                            <div class="card-body">
+                            <div class="card-body border">
                                 <h5 class="card-title">{{ $t->ticket_name }}</h5>
                                 <p>Description</p>
                                 <span>
