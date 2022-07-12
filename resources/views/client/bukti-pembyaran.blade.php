@@ -3,23 +3,7 @@
 @section('content')
     <div class="container my-4">
         <div class="row flex-lg-nowrap">
-            <div class="col-12 col-lg-auto mb-3" style="width: 200px;">
-                <div class="card p-3">
-                    <div class="e-navlist e-navlist--active-bg">
-                        <ul class="nav">
-                            <li class="nav-item"><a class="nav-link px-2 active" href="#"><i
-                                        class="fa fa-fw fa-bar-chart mr-1"></i><span>Overview</span></a></li>
-                            <li class="nav-item"><a class="nav-link px-2"
-                                    href="https://www.bootdey.com/snippets/view/bs4-crud-users" target="__blank"><i
-                                        class="fa fa-fw fa-th mr-1"></i><span>CRUD</span></a></li>
-                            <li class="nav-item"><a class="nav-link px-2"
-                                    href="https://www.bootdey.com/snippets/view/bs4-edit-profile-page" target="__blank"><i
-                                        class="fa fa-fw fa-cog mr-1"></i><span>Settings</span></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            
 
             <div class="col">
                 <div class="row">
@@ -78,8 +62,9 @@
 
                                                     </div>
                                                 </div>
+                                                
                                             @else
-                                                <div class="col-lg-12 mb-3">
+                                                <div class="col-lg-12 p-0 mb-3">
                                                     <div class="card mb-3">
                                                         <div class="card-body d-flex justify-content-center">
                                                             <img class="img-thumbnail" style="widht:auto; max-height:300px"
@@ -88,7 +73,7 @@
                                                         </div>
                                                     </div>
                                                    
-                                                    <div class="d-grid gap-2">
+                                                    <div class="d-grid">
                                                         <a href="{{ asset('ETicket/'.$pemesanan->TicketCategory->e_ticket) }}" class="btn btn-dark"  download> 
                                                             Get Your Ticket Here ! 
                                                         </a>
@@ -103,7 +88,7 @@
                                     </div>
                                     <div class="col-md-5 offset-lg-1 p-3 card shadow">
                                         <div class="row">
-                                            <h3 class="fw-normal">Product Details</h3>
+                                            <h3 class="fw-normal">Concert Information</h3>
                                             <hr>
                                             <div class="d-flex justify-content-center">
                                                 <img class="img-fluid"

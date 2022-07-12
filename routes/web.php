@@ -113,6 +113,10 @@ Route::middleware(['auth', 'role:admin|EO'])->group(function () {
                 Route::get('ticket-management/{id}/create-category', [TicketCategoryController::class, 'create'])->name('ticketCategory.create');
                 Route::post('ticket-management/{id}/store-category', [TicketCategoryController::class, 'store'])->name('ticketCategory.store');
 
+                Route::get('order', [EoController::class, 'pemesanan'])->name('eo.order.index');
+                Route::get('order/option/{id}', [EoController::class, 'orderOption'])->name('eo.order.orderOption');
+                Route::post('order/option/{id}/accept', [EoController::class, 'acceptPayment'])->name('eo.order.accept');
+
                 Route::get('NIB', [Eo_NIBController::class, 'index'])->name('eo.nib.index');
                 Route::post('NIB-management/store', [Eo_NIBController::class, 'store'])->name('eo.nib.store');
                 Route::get('NIB-management/{id}', [Eo_NIBController::class, 'show'])->name('eo.nib.show');
@@ -120,6 +124,7 @@ Route::middleware(['auth', 'role:admin|EO'])->group(function () {
                 Route::post('NIB-management/update/{id}', [Eo_NIBController::class, 'update'])->name('eo.nib.update');
                 Route::get('NIB-management/delete/{id}', [Eo_NIBController::class, 'destroy'])->name('eo.nib.destroy');
                 
+
             });
         });
     });

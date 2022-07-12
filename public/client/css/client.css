@@ -5,11 +5,12 @@
 }
 
 body {
-    background-color: rgb(217, 217, 240) !important;
+    background-image: linear-gradient(to right, #00E5FF, #1200FF);
 }
 
 header {
-    font-size: 24px; background-image: linear-gradient(to right, #00E5FF, #1200FF);
+    font-size: 24px;
+    background-image: linear-gradient(to right, #00E5FF, #1200FF);
 }
 
 .row-bg {

@@ -10,7 +10,6 @@
                                 alt="">
                             <div class="card-body border">
                                 <h5 class="card-title">{{ $t->ticket_name }}</h5>
-                                <p>Description</p>
                                 <span>
                                     <h6> {{ $t->Venues->venue_location }} </h6>
                                 </span>

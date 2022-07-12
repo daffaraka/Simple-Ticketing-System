@@ -21,10 +21,9 @@
                                 <div class="btn btn-primary mt-3"> <i class="fa fa-user me-sm-1"></i>
                                     {{ Auth::user()->name }} </div>
                                 <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                                     class="btn btn-dark ms-3 mt-3"> Logout </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none" >
                                     @csrf
                                 </form>
                             @endauth

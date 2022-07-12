@@ -2,23 +2,6 @@
 @section('content')
     <div class="container my-4">
         <div class="row flex-lg-nowrap">
-            <div class="col-12 col-lg-auto mb-3" style="width: 200px;">
-                <div class="card p-3">
-                    <div class="e-navlist e-navlist--active-bg">
-                        <ul class="nav">
-                            <li class="nav-item"><a class="nav-link px-2 active" href="#"><i
-                                        class="fa fa-fw fa-bar-chart mr-1"></i><span>Overview</span></a></li>
-                            <li class="nav-item"><a class="nav-link px-2"
-                                    href="https://www.bootdey.com/snippets/view/bs4-crud-users" target="__blank"><i
-                                        class="fa fa-fw fa-th mr-1"></i><span>CRUD</span></a></li>
-                            <li class="nav-item"><a class="nav-link px-2"
-                                    href="https://www.bootdey.com/snippets/view/bs4-edit-profile-page" target="__blank"><i
-                                        class="fa fa-fw fa-cog mr-1"></i><span>Settings</span></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
 
             <div class="col">
                 <div class="row">
@@ -27,7 +10,7 @@
                             <div class="card-body">
                                 <div class="e-profile px-3">
 
-                                    <h1>Your Transaction</h1>
+                                    <h1>{{Auth::user()->name}} Transaction</h1>
                                     <div class="tab-content pt-3">
                                         <div class="tab-pane active">
                                             <div class="row px-2">
@@ -54,7 +37,14 @@
                                                                             <td>{{ $data->Ticket->ticket_name }}</td>
                                                                             <td>{{ $data->created_at }}</td>
                                                                             <td>Rp.{{ number_format($data->total)}}</td>
-                                                                            <td> <a href="{{route('client.methodPembayaran',$data->id_pemesanan)}}" class="btn btn-info">{{ $data->status }} </a> </td>
+                                                                            <td> 
+                                                                                @if ($data->status == 'PENDING')
+                                                                                <a href="{{route('client.methodPembayaran',$data->id_pemesanan)}}" class="btn btn-warning">{{ $data->status }} </a> </td>
+
+                                                                                @else
+                                                                                <a href="{{route('client.buktiPembayaran',$data->id_pemesanan)}}" class="btn btn-success" >{{ $data->status }} </a> </td>
+
+                                                                                @endif
                                                                             {{-- <td>
                                                                                 <a href="{{ route('ticket.show', $t->id_ticket) }}" class="btn btn-outline-warning">Show</a>
                                                                                 <a href="{{ route('ticket.edit', $t->id_ticket) }}" class="btn btn-dark">Edit</a>

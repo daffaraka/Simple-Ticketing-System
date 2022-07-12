@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Venue;
 use App\Models\Artist;
+use App\Models\Pemesanan;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -150,4 +151,48 @@ class EoController extends Controller
             }
         }
     }
+
+    public function pemesanan()
+    {
+        $order = Pemesanan::with(['Ticket','TicketCategory','User'])->get();
+
+        if (request()->ajax()) {
+
+            return DataTables::of($order)->addColumn('action', function ($data) {
+                $button = '<a href="order/option/'.$data->id_pemesanan.' " data-toggle="tooltip"  data-id="' . $data->id_pemesanan . '" data-original-title="Show" class="show btn btn-primary px-3 show-post"><i class="fa fa-list"></i> Option</a>';
+                $button .= '&nbsp;&nbsp;';
+                return $button;
+            })
+                ->rawColumns(['action'])
+                ->addIndexColumn()
+                ->make(true);
+        };
+        return view('EO.orders.order-index',compact('order'));    
+    }
+
+    public function orderOption($id)
+    {
+        $pemesanan = Pemesanan::with('User')->find($id);
+
+        return view('EO.orders.order-option',compact('pemesanan'));
+    }
+
+    public function acceptPayment($id)
+    {
+        $pemesanan = Pemesanan::find($id);
+        $pemesananAttr = [];
+        $pemesananAttr['status'] = 'BERHASIL';
+
+        $pemesananUpdate =  $pemesanan->update($pemesananAttr);
+        if (!$pemesananUpdate) {
+            Alert::error('Error', 'Whoops! Something wrong!');
+            return redirect()->back();
+        } else {
+            Alert::success('Success', 'Status has been updated');
+            return redirect()->back();
+        }
+       
+    }
+
+
 }
